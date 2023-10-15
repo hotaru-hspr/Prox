@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <link rel="icon" type="image/vnd.icon" href="Assets/favicon.ico">
+    <title>Feed - Prox.</title>
+      <body onload="checkLoggedIn(); getLocation();">
+        <style>
+          body {
+            background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+            height:100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+          }        
+          
+          @font-face {
+            font-family: 'Bw Quinta Pro';
+            src: url("Assets/BwQuintaPro-Light.woff");
+          }
+
+          h1 {
+            color: rgb(0, 0, 0);
+            font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            
+          }
+          
+          .title {
+            margin-top: 40px;
+            margin-left: 10px;
+            font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 30px;
+            color: #ffffff;
+          }
+
+          .username {
+            margin-left: 10px;
+            font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 25px;
+            color: #ffffff;
+          }
+
+          .content {
+            margin-left: 10px;
+            font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            color: #000000;
+          }
+
+          .locid {
+            margin-left: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 15px;
+            color: #000000;
+          }
+          
+          .sidenav {
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+            overflow-x: hidden;
+            padding-top: 20px;
+          }
+
+          .sidenav img{
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+
+          }
+          .sidenav a {
+            position: relative;
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 25px;
+            color: #000000;
+            display: block;
+            cursor: pointer;
+          }
+
+          .sidenav a:hover {
+            color: #93a5cf;
+          }
+
+          .loader {
+              border: 10px solid #f3f3f3;
+              border-radius: 50%;
+              border-top: 10px solid rgb(23, 19, 37);
+              width: 40px;
+              height: 40px;
+              animation: spin 1s linear infinite;
+          }
+
+          @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+          }
+
+          .main {
+            margin-left: 160px;
+            font-size: 28px;
+            padding: 0px 10px;
+          }
+
+          .post {
+            padding: 10px;
+            margin: auto;
+            background-color: #93a5cf;
+            border-radius: 10px;
+            cursor: pointer;
+          }
+
+          .postbyuser {
+            padding: 10px;
+            margin: auto;
+            background-color: rgb(255, 74, 120);
+            border-radius: 10px;
+            cursor: pointer;
+          }
+
+          .invis {
+            background: transparent;
+            border: 0px solid;
+          }
+
+          .postbutton {
+            background: #93a5cf;
+            height: 60px;
+            width: 60px;
+            border: 0px solid;
+            display: inline-block;
+            align-items: left;
+            margin-bottom: 4px;
+            border-radius: 1000px;
+            color: #ffffff;
+            font-size: 40px;
+            cursor: pointer;
+          }
+
+          .addpost {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color:  #00000057;
+          }
+          
+          .addpost-cont {
+            background-color: #93a5cf;
+            border-radius: 10px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #aadae7;
+            width: 80%;
+          }
+
+          .close {
+            color: #000000;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+          }
+
+          .close:hover,
+          .close:focus {
+            color: #caeeff;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        </style>
+
+        <div class="sidenav" >
+            <a href="feed.html" class="button">Feed</a>
+            <a href="profile.html" class="button">Profile</a>
+            <img src="Assets/logo.png" alt="logo.png">
+        </div>
+        
+        <div class="main">
+          <h1 style="display: inline-block;">Posts near your location</h1>
+          <button id="postbtn" class="postbutton">+</button>
+          <p id="disploc" class="content"></p>
+
+          <div id="Posts">
+            <div class="loader"></div>
+          </div>
+        </div>
+            
+        <div id="postwin" class="addpost">
+          <form id="postmodal">
+            <div class="addpost-cont">
+              <span class="close">&times;</span>
+
+              <h4 style="color: #ffffff; font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              Post Title</h4>
+
+              <textarea id="ptitle"
+              style="padding:10px;
+              border:2px solid #aadae7;
+              background-color: #e4efe9;
+              outline :none;
+              border-radius:5px;
+              font-size: 15px;
+              height: 20px;
+              width: 40%;
+              color:#000000;
+              font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+              placeholder="Title"></textarea>
+
+              <h4 style="color: #ffffff; font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+              Post Content</h4>
+
+              <textarea id="pcontent"
+              style="padding:10px;
+              border:2px solid #aadae7;
+              background-color: #e4efe9;
+              outline :none;
+              border-radius:5px;
+              font-size: 15px;
+              height: 200px;
+              width: 80%;
+              color:#000000;
+              font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+              placeholder="Content" rows="5" cols="50"></textarea>
+              <br><br>
+
+              <button type="button" style="
+              background: #ffffff;
+              height: 40px;
+              width: 100px;
+              border: 0px solid;
+              margin-bottom: 4px;
+              border-radius: 1000px;
+              font-size: 20px;
+              color: #000000;
+              cursor: pointer;" onclick="postToAPI()">Post</button>
+              </button>
+
+            </div>
+          </form>
+        </div>
+
+        <script>
+          var addpost = document.getElementById("postwin");
+          var postbtn = document.getElementById("postbtn");
+          var close = document.getElementsByClassName("close")[0];
+
+          postbtn.onclick = function() {
+            addpost.style.display = "block";
+          }
+          
+          close.onclick = function() {
+            addpost.style.display = "none";
+          }
+          
+          window.onclick = function(event) {
+            if (event.target == addpost) {
+              addpost.style.display = "none";
+            }
+          }
+          </script>
+          <script src="main.js"></script>
+    </body>
+</html>

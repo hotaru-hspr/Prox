@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <link rel="icon" type="image/vnd.icon" href="Assets/favicon.ico">
+    <body onload="checkLoggedIn(); userposts(); profileuser()">
+      <title>Profile - Prox.</title>
+            <style>
+              body {
+              background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+              height:100%;
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              }
+              
+              @font-face {
+                font-family: 'Bw Quinta Pro';
+                src: url("Assets/BwQuintaPro-Light.woff");
+              }
+
+              h1 {
+                color: rgb(0, 0, 0);
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+              }
+              
+              .title {
+                margin-top: 40px;
+                margin-left: 10px;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 30px;
+                color: #ffffff;
+              }
+
+              .username {
+                margin-left: 10px;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 25px;
+                color: #ffffff;
+              }
+
+              .content {
+                margin-left: 10px;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                color: #000000;
+              }
+
+              .locid {
+                margin-left: 10px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 15px;
+                color: #000000;
+              }
+              
+              .sidenav {
+                height: 100%;
+                width: 160px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+                overflow-x: hidden;
+                padding-top: 20px;
+              }
+
+              .sidenav img{
+                position: absolute;
+                bottom: 10px;
+                width: 100%;
+                cursor: help;
+              }
+              .sidenav a {
+                position: relative;
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 25px;
+                color: #000000;
+                display: block;
+                cursor: pointer;
+              }
+
+              .sidenav a:hover {
+                color: #93a5cf;
+              }
+
+              .loader {
+                  border: 10px solid #f3f3f3;
+                  border-radius: 50%;
+                  border-top: 10px solid rgb(23, 19, 37);
+                  width: 40px;
+                  height: 40px;
+                  animation: spin 1s linear infinite;
+              }
+
+              @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+              }
+
+              .main {
+                margin-left: 160px;
+                font-size: 28px;
+                padding: 0px 10px;
+              }
+
+              .postbyuser {
+                padding: 10px;
+                margin: auto;
+                background-color: rgb(255, 74, 120);
+                border-radius: 10px;
+                cursor: pointer;
+              }
+
+              .invis {
+                background: transparent;
+                border: 0px solid;
+              }
+            </style>
+
+            <div class="sidenav" >
+              <a href="feed.html" class="button">Feed</a>
+              <a href="profile.html" class="button">Profile</a>
+              <img src="Assets/logo.png" alt="logo.png" onclick="location.href = 'muttai.html'">
+            </div>
+            
+            <div class="main">
+              <h1 id="user" style="display: inline-block;">Profile</h1>
+              <button onclick="logout()" style="
+              background: #93a5cf;
+              height: 60px;
+              width: 60px;
+              border: 0px solid;
+              display: inline-block;
+              align-items: left;
+              margin-bottom: 4px;
+              border-radius: 1000px;
+              color: #ffffff;
+              font-size: 20px;
+              cursor: pointer;"><img src="Assets/logout.png" style="width: 30px; height: 30px;"></button>
+
+              <div id="userPosts">
+                <div class="loader"></div>
+              </div>
+            </div>
+
+        <script src="main.js"></script>
+  </body>
+</html>

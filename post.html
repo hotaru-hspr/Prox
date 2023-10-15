@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <link rel="icon" type="image/vnd.icon" href="Assets/favicon.ico">
+    <title>Post - Prox.</title>
+      <body onload="checkLoggedIn(); postDisplay(); waituntilalltheotherstuffhasloaded();">
+          <style>
+              body {
+                background-image: linear-gradient(to top, #bdc2e8 0%, #bdc2e8 1%, #e6dee9 100%);
+                height:100%;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+              }
+              
+              @font-face {
+                font-family: 'Bw Quinta Pro';
+                src: url("Assets/BwQuintaPro-Light.woff");
+              }
+
+              h1 {
+                color: rgb(0, 0, 0);
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                
+              }
+              
+              .username {
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                color: rgb(0, 0, 0);
+              }
+
+              .title {
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 25px;
+                color: #000000;
+              }
+
+              .content {
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                color: #000000;
+              }
+
+              .locid {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 15px;
+                color: #000000;
+              }
+              
+              .sidenav {
+                height: 100%;
+                width: 160px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+                overflow-x: hidden;
+                padding-top: 20px;
+              }
+
+              .sidenav img{
+                position: absolute;
+                bottom: 10px;
+                width: 100%;
+
+              }
+              .sidenav a {
+                position: relative;
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 25px;
+                color: #000000;
+                display: block;
+                cursor: pointer;
+              }
+
+              .sidenav a:hover {
+                color: #93a5cf;
+              }
+
+              .loader {
+                  border: 10px solid #f3f3f3;
+                  border-radius: 50%;
+                  border-top: 10px solid rgb(23, 19, 37);
+                  width: 40px;
+                  height: 40px;
+                  animation: spin 1s linear infinite;
+              }
+
+              @keyframes spin {
+                  0% { transform: rotate(0deg); }
+                  100% { transform: rotate(360deg); }
+              }
+
+              .main {
+                margin-left: 160px;
+                font-size: 28px;
+                padding: 0px 10px;
+              }
+
+              .editpostbox {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color:  #00000057;
+              }
+              
+              .editpostbox-cont {
+                background-color: #93a5cf;
+                border-radius: 10px;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #aadae7;
+                width: 80%;
+              }
+
+              .close {
+                color: #000000;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+              }
+
+              .close:hover,
+              .close:focus {
+                color: #caeeff;
+                text-decoration: none;
+                cursor: pointer;
+              }
+
+              .postoptions {
+                background: transparent;
+                height: 20px;
+                width: 20px;
+                border: 0px solid;
+                display: inline-block;
+                align-items: right;
+                margin-bottom: 4px;
+                color: #ffffff;
+              }
+          </style>
+
+          <div class="sidenav">
+              <a href="feed.html" class="button">Feed</a>
+              <a href="profile.html" class="button">Profile</a>
+              <img src="Assets/logo.png" alt="logo.png">
+          </div>
+          
+          <div class="main" id="dispost"></div></div>
+              
+          <div id="postwin" class="editpostbox">
+            <form id="postmodal">
+              <div class="editpostbox-cont">
+                <span class="close">&times;</span>
+
+                <h4 style="color: #ffffff; font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Post Title</h4>
+
+                <textarea id="ptitle"
+                style="padding:10px;
+                border:2px solid #aadae7;
+                background-color: #e4efe9;
+                outline :none;
+                border-radius:5px;
+                font-size: 15px;
+                height: 20px;
+                width: 40%;
+                color:#000000;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                placeholder="Title"></textarea>
+
+                <h4 style="color: #ffffff; font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                Post Content</h4>
+
+                <textarea id="pcontent"
+                style="padding:10px;
+                border:2px solid #aadae7;
+                background-color: #e4efe9;
+                outline :none;
+                border-radius:5px;
+                font-size: 15px;
+                height: 200px;
+                width: 80%;
+                color:#000000;
+                font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                placeholder="Content" rows="5" cols="50"></textarea>
+                <br><br>
+
+                <button id="editsend" type="button" style="
+                background: #ffffff;
+                height: 40px;
+                width: 100px;
+                border: 0px solid;
+                margin-bottom: 4px;
+                border-radius: 1000px;
+                font-size: 20px;
+                color: #000000;
+                cursor: pointer;" onclick="editpost()">Post</button>
+
+              </div>
+            </form>
+          </div>
+
+          <script>
+            function waituntilalltheotherstuffhasloaded() {
+              var editpost = document.getElementById("postwin");
+              var close = document.getElementsByClassName("close")[0];
+              var editbtn = document.getElementById("editbut");
+                
+              editbtn.onclick = function() {
+                editpost.style.display = "block";
+              }
+
+              close.onclick = function() {
+                editpost.style.display = "none";
+              }
+              
+              window.onclick = function(event) {
+                if (event.target == editpost) {
+                editpost.style.display = "none";
+                }
+              }
+            }
+
+            function deletered() {
+                document.getElementById("delbut").innerHTML = '<img class="delete" src="Assets/delete_hover.png" style="width: 20px; height: 20px;" onclick="deletepost()" onmouseleave="deletewhite()">';
+              }
+
+            function deletewhite() {
+              document.getElementById("delbut").innerHTML = '<img class="delete" src="Assets/delete.png" style="width: 20px; height: 20px;" onclick="deletepost()" onmouseover="deletered()">';
+            }
+
+            function editgreen() {
+              document.getElementById("editbut").innerHTML = '<img class="delete" src="Assets/edit_hover.png" style="width: 20px; height: 20px;" onmouseleave="editwhite()">';
+            }
+
+            function editwhite() {
+              document.getElementById("editbut").innerHTML = '<img class="delete" src="Assets/edit.png" style="width: 20px; height: 20px;" onmouseover="editgreen()">';
+            }
+            </script>
+            <script src="main.js"></script>
+    </body>
+</html>

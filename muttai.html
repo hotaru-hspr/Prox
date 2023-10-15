@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <link rel="icon" type="image/vnd.icon" href="Assets/favicon.ico">
+        <title>Easter Egg - Prox.</title>
+            <body onload="checkLoggedIn();">
+                <style>
+                    html {
+                        min-height:100%;
+                    }
+
+                    * {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    @font-face {
+                        font-family: 'Bw Quinta Pro';
+                        src: url("Assets/BwQuintaPro-Light.woff");
+                    }
+
+                    h1 {
+                        color: rgb(255, 255, 255);
+                        margin-left: 5%;
+                        font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        max-width: 100%;
+                        height: auto;
+                    }
+
+                    body {
+                        background-image: linear-gradient(to top, #86aedc 0%, #f9e7fd 100%);
+                        overflow: hidden;
+                        height:100%;
+                    }
+
+                    .divcenter {
+                        display: inline-block;
+                        position: fixed;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 50%;
+                        margin: auto;
+                    }
+                    
+                    .center {
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 25%;
+                    }
+
+                    .logoimg {
+                        margin-left: 5%;
+                        max-width: 40%;
+                        height: auto;
+                    }
+
+                    p {
+                        font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                        font-size: 25px;
+                        margin-left: 5%;
+                        color: rgb(0, 0, 0);
+                    }
+
+                    .socials {
+                        margin-left: 5%;
+                        background: (255, 255, 255)a5cf;
+                        height: 50px;
+                        width: 50px;
+                        border: 0px solid;
+                        display: inline-block;
+                        align-items: left;
+                        margin-bottom: 4px;
+                        margin-right: 10px;
+                        border-radius: 1000px;
+                        color: #ffffff;
+                        cursor: pointer;
+                    }
+
+                    a {
+                    font-family: 'Bw Quinta Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    font-size: 20px;
+                    color: #000000;
+                    cursor: pointer;
+                    margin-left: 5%;
+                    }
+
+                    a:hover {
+                    color: #ffffff;
+                    }
+                </style>
+
+                <div class="divcenter">
+                    <img src="Assets/logo_login.png" alt="logo.png" class="logoimg">
+                    <h1><br>The Social Media App that makes you touch grass!</h1>
+                    <h1 style="font-size: 20px">Releasing to the public: Never!</h1>
+                    <p><br>Made by hotaru, for Delta Round 2.</p>
+                    <p style="font-size: 20px;">(I'm tired, boss.)</p>
+                    <br><br>
+                    <button class="socials"><img src="Assets/dicord.png" style="width: auto; height: 20px;" onclick="window.open('https://discord.com/users/528963356082700289')"></button>
+                    <button class="socials"><img src="Assets/ig.png" style="width: auto; height: 20px;" onclick="window.open('https://instagram.com/prajeshraam')"></button>
+                    <button class="socials"><img src="Assets/x.png" style="width: auto; height: 20px;" onclick="window.open('https://x.com/hotaru_hspr')"></button>
+                    <br><br>
+                    <a href="feed.html">Return back to feed</a>
+                </div>
+
+        </body>
+    <script src="main.js"></script>
+</html>
