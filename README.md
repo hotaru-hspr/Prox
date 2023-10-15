@@ -5,7 +5,7 @@ Before you open the Vercel url, initialize that main.py file to start the server
 
 That's it.
 
-- hotaru
+ - hotaru
 
 [Vercel site](https://prox-by-hotaru.vercel.app/)
 (Made for Delta Inductions - Round 2)
