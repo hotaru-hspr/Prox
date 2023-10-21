@@ -54,8 +54,8 @@ function getLocation() {
 		lat = position.coords.latitude;
 		long = position.coords.longitude;
 
-		sessionStorage.setItem("lat", JSON.stringify(lat));
-		sessionStorage.setItem("long", JSON.stringify(long));
+		localStorage.setItem("lat", JSON.stringify(lat));
+		localStorage.setItem("long", JSON.stringify(long));
 		
 		console.log("Currently logged in:", localStorage["temp"]);
 		console.log("Current latitude & longitude:", lat, long);
