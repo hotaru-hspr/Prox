@@ -1,4 +1,5 @@
-# Prox.
+# ![Prox.](https://github.com/hotaru-hspr/Prox/assets/145186759/84f6097d-5254-497a-9615-2a847ff0e1fa)
+
 Prox. - The Social Media App that makes you touch grass!
 
 Submission to the SNUC Delta Inductions - Round 2 (2023).
