@@ -137,8 +137,8 @@ function postToAPI() {
 			"id": 1,
 			"title": document.getElementById("ptitle").value,
 			"content": document.getElementById("pcontent").value,
-			"createdLat": parseFloat(lat),
-			"createdLong": parseFloat(long),
+			"createdLat": parseFloat(localStorage["lat"]),
+			"createdLong": parseFloat(localStorage["long"]),
 			"other": localStorage["temp"]
 	}),
 		headers: {
@@ -230,8 +230,8 @@ function editpost() {
 		body: JSON.stringify({
 			"title": document.getElementById("ptitle").value,
 			"content": document.getElementById("pcontent").value,
-			"createdLat": parseFloat(sessionStorage["lat"]),
-			"createdLong": parseFloat(sessionStorage["long"]),
+			"createdLat": parseFloat(lat),
+			"createdLong": parseFloat(long),
 			"other": localStorage["temp"]
 	}),
 		headers: {
