@@ -1,4 +1,4 @@
-# ![Prox.](https://github.com/hotaru-hspr/Prox/Assets/logo.png)
+# ![Prox.](https://github.com/hotaru-hspr/Prox/blob/main/Assets/logo.png)
 Prox. - The Social Media App that makes you touch grass!
 
 Before you open the Vercel url, initialize that main.py file to start the server (if you somehow don't have it with you, it's there in this repo).
