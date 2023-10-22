@@ -6,7 +6,7 @@ Submission to the SNUC Delta Inductions - Round 2 (2023).
 [Vercel site](https://prox-by-hotaru.vercel.app/)
 
 # Guide
-1.Install required Python modules specified in ```requirements.txt``` by running ```pip install -r requirements.txt``` in terminal cd'd at directory of file.
+1. Install required Python modules specified in ```requirements.txt``` by running ```pip install -r requirements.txt``` in terminal cd'd at directory of file.
 
 2. Open main.py file from the repo through terminal to initialize the server.
 
