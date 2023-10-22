@@ -1,15 +1,18 @@
 # Prox.
 Prox. - The Social Media App that makes you touch grass!
 
-Before you open the Vercel url, initialize that main.py file to start the server (if you somehow don't have it with you, it's there in this repo).
-
-Python modules to be installed for the server: Flask-CORS and Flask sqlalchemy.
-
-That's it.
-
-- hotaru
+Submission to the SNUC Delta Inductions - Round 2 (2023).
 
 [Vercel site](https://prox-by-hotaru.vercel.app/)
 
+# Guide
+1. Open main.py file from the repo through terminal to initialize the server.
+2. Once the server is up, you can access the above Vercel site with all functionality working. Note that viewing, creating and modifying posts will not work without the server running.
 
-(Made for Delta Inductions - Round 2)
+# Screenshots
+(Will be uploaded soon)
+
+# Notes
+1. A bug has been identified, which permanently stores the coordinates of the place where the website has been first opened and overwrites the newer coordinates after reloading. Error has been identified to be related to a sessionStorage/localStorage confusion and an initial fix has been released, which may or may not fix the issue. Please hang on until I get home and on the PC (I'm doing all these on mobile).
+
+2. While the UI is dynamic on a desktop, it's not optimizef for mobile. It barely works though, just don't expect it to look like another social media app optimized for mobile.
