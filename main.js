@@ -230,8 +230,8 @@ function editpost() {
 		body: JSON.stringify({
 			"title": document.getElementById("ptitle").value,
 			"content": document.getElementById("pcontent").value,
-			"createdLat": parseFloat(lat),
-			"createdLong": parseFloat(long),
+			"createdLat": localStorage["lat"],
+			"createdLong": localStorage["long"],
 			"other": localStorage["temp"]
 	}),
 		headers: {
