@@ -22,6 +22,4 @@ Submission to the SNUC Delta Inductions - Round 2 (2023).
 <img width="1265" alt="egg" src="https://github.com/hotaru-hspr/Prox/assets/145186759/ad79ab4d-1a7e-4695-82a5-db3216cacbbe">
 
 # Notes
-1. A bug has been identified, which permanently stores the coordinates of the place where the website has been first opened and overwrites the newer coordinates after reloading. Error has been identified to be related to a sessionStorage/localStorage confusion and an initial fix has been released, which may or may not fix the issue. Please hang on until I get home and on the PC (I'm doing all these on mobile).
-
-2. While the UI is dynamic on a desktop, it's not optimised for mobile. It barely works though, just don't expect it to look like another social media app optimized for mobile.
+1. While the UI is dynamic on a desktop, it's not optimised for mobile. It barely works though, just don't expect it to look like another social media app optimized for mobile.
