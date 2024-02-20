@@ -1,12 +1,11 @@
 # ![Prox.](https://github.com/hotaru-hspr/Prox/assets/145186759/84f6097d-5254-497a-9615-2a847ff0e1fa)
 
-A simple JS-based Geolocation-utilizing Social Media App.
-
-[Vercel site](https://prox-by-hotaru.vercel.app/)
 
 Prox. - The Social Media App that makes you touch grass!
 
 _Submission to the SNUC Delta Inductions - Round 2 (2023)_
+
+[Vercel site](https://prox-by-hotaru.vercel.app/)
 
 # Guide
 1. Install required Python modules specified in ```requirements.txt``` by running ```pip install -r requirements.txt``` in terminal at directory of file.
