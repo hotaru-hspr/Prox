@@ -1,19 +1,16 @@
-# ![Prox.](https://github.com/hotaru-hspr/Prox/assets/145186759/84f6097d-5254-497a-9615-2a847ff0e1fa)
+# <img width="250" alt="Prox." src="https://github.com/hotaru-hspr/Prox/assets/145186759/84f6097d-5254-497a-9615-2a847ff0e1fa">
 
 
 Prox. - The Social Media App that makes you touch grass!
 
 _Submission to the SNUC Delta Inductions - Round 2 (2023)_
 
-[Vercel site](https://prox-by-hotaru.vercel.app/)
-
 # Guide
 1. Install required Python modules specified in ```requirements.txt``` by running ```pip install -r requirements.txt``` in terminal at directory of file.
 
 2. Open main.py file from the repo through terminal to initialize the server.
 
-3. Once the server is up, you can access the above Vercel site with all functionality working.
-   **Note:** Program is self-hosted, required the Flask server running in the background locally while accessing the Vercel site.
+3. Once the server is up, you can open index.html and use the website.
 
 # Screenshots
 <img width="1271" alt="login" src="https://github.com/hotaru-hspr/Prox/assets/145186759/42a9cd5a-f0f1-4f87-acc0-5d9a57b5ac68">
